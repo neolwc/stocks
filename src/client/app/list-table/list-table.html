@@ -1,0 +1,18 @@
+<table>
+	<thead>
+		<tr>
+			<th>Symbol</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Market Cap</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="#quote of quotes">
+			<th>{{quote.Symbol}}</th>
+			<td>{{quote.Name}}</td>
+			<td>{{quote.LastTradePriceOnly}}</td>
+			<td>{{quote.MarketCapitalization}}</td>
+		</tr>
+	</tbody>
+</table>

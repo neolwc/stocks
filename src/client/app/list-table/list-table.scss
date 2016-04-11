@@ -1,0 +1,15 @@
+table {
+	border-collapse: collapse;
+	th, td {
+		padding: 1rem 2rem;
+	}
+	tbody tr {
+		&:nth-of-type(odd) {
+			background-color: #f9f9f9;
+		}
+		&:hover {
+			color: #fff;
+			background-color: #ff5252;
+		}
+	}
+}
