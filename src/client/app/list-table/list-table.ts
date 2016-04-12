@@ -19,6 +19,12 @@ export class ListTable implements OnInit {
     mD: false,
     sA: true
   };
+  private ths = [
+    { a: 's', n: 'Symbol' },
+    { a: 'n', n: 'Name' },
+    { a: 'p', n: 'Price' },
+    { a: 'm', n: 'Market Cap' }
+  ];
 
   constructor(private _financeService: FinanceService) {}
 

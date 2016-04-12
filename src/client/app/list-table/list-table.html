@@ -1,32 +1,11 @@
 <table>
 	<thead>
 		<tr>
-			<th (click)="sort('s')">
-				Symbol
+			<th *ngFor="#th of ths" (click)="sort(th.a)">
+				<span>{{th.n}}</span>
 				<i class="arrow">
-					<i [style.display]="order.sA?'inline-block':'none'" class="material-icons">arrow_drop_up</i>
-					<i [style.display]="order.sD?'inline-block':'none'" class="material-icons">arrow_drop_down</i>
-				</i>
-			</th>
-			<th (click)="sort('n')">
-				Name
-				<i class="arrow">
-					<i [style.display]="order.nA?'inline-block':'none'" class="material-icons">arrow_drop_up</i>
-					<i [style.display]="order.nD?'inline-block':'none'" class="material-icons">arrow_drop_down</i>
-				</i>
-			</th>
-			<th (click)="sort('p')">
-				Price
-				<i class="arrow">
-					<i [style.display]="order.pA?'inline-block':'none'" class="material-icons">arrow_drop_up</i>
-					<i [style.display]="order.pD?'inline-block':'none'" class="material-icons">arrow_drop_down</i>
-				</i>
-			</th>
-			<th (click)="sort('m')">
-				Market Cap
-				<i class="arrow">
-					<i [style.display]="order.mA?'inline-block':'none'" class="material-icons">arrow_drop_up</i>
-					<i [style.display]="order.mD?'inline-block':'none'" class="material-icons">arrow_drop_down</i>
+					<i [style.display]="order[th.a+'A']?'inline-block':'none'" class="material-icons">arrow_drop_up</i>
+					<i [style.display]="order[th.a+'D']?'inline-block':'none'" class="material-icons">arrow_drop_down</i>
 				</i>
 			</th>
 		</tr>

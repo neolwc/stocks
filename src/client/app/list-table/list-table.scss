@@ -7,6 +7,7 @@ table {
 	thead {
 		background-color: #ff8a80;
 		th {
+			cursor: default;
 			&:hover {
 				color: #fff;
 				fill-color: #fff;
