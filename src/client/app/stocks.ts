@@ -13,13 +13,7 @@ import {ListTable} from './list-table/list-table';
   pipes: []
 })
 @RouteConfig([
-    { path: '/', name: 'ListTable', component: ListTable }
+    { path: '/', name: 'ListTable', component: ListTable, useAsDefault: true }
 ].concat(CliRouteConfig))
 
-export class StocksApp {
-  defaultMeaning: number = 42;
-
-  meaningOfLife(meaning?: number) {
-    return `The meaning of life is ${meaning || this.defaultMeaning}`;
-  }
-}
+export class StocksApp {}
