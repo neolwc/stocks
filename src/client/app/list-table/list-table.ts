@@ -7,6 +7,7 @@ import {FinanceService} from '../yahoo.service';
   styleUrls: ['app\/list-table/list-table.css']
 })
 export class ListTable implements OnInit {
+  public all;
   public quotes;
 
   private order = {
@@ -30,7 +31,7 @@ export class ListTable implements OnInit {
 
   ngOnInit() {
     this._financeService.list()
-      .subscribe(quotes => this.quotes = quotes);
+      .subscribe(quotes => this.quotes = this.all = quotes);
   }
 
   compare(a, b, by) {
@@ -52,5 +53,10 @@ export class ListTable implements OnInit {
   sort(name) {
     if (this.order[name + 'A']) this.sortBy(name + 'D');
     else this.sortBy(name + 'A');
+  }
+
+  filter(q) {
+    let re = new RegExp(q, 'ig');
+    this.quotes = this.all.filter(quote => re.test(quote.Symbol) || re.test(quote.Name));
   }
 }

@@ -32,4 +32,15 @@ table {
 			background-color: #ff5252;
 		}
 	}
+	[colspan="4"] {
+		padding-bottom: 0;
+	}
+}
+input {
+	width: 100%;
+	background-color: inherit;
+	outline: 0;
+	border: 0;
+	font-size: 2rem;
+	border-bottom: 2px solid;
 }
