@@ -4,9 +4,27 @@ table {
 	th, td {
 		padding: 1rem 2rem;
 	}
+	thead {
+		background-color: #ff8a80;
+		th {
+			&:hover {
+				color: #fff;
+				fill-color: #fff;
+				background-color: #d50000;
+			}
+			.arrow {
+				display: inline-block;
+				width: 0px;
+				i {
+					font-size: 18px;
+					line-height: 0;
+				}
+			}
+		}
+	}
 	tbody tr {
 		&:nth-of-type(odd) {
-			background-color: #f9f9f9;
+			background-color: #eee;
 		}
 		&:hover {
 			color: #fff;
