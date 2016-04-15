@@ -3,7 +3,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {CliRouteConfig} from './route-config';
 import {FinanceService} from './yahoo.service';
-import {ListTable} from './list-table/list-table';
+import {Watchlist} from './watchlist.component';
 
 @Component({
   selector: 'stocks-app',
@@ -13,7 +13,7 @@ import {ListTable} from './list-table/list-table';
   pipes: []
 })
 @RouteConfig([
-    { path: '/', name: 'ListTable', component: ListTable, useAsDefault: true }
+    { path: '/', name: 'Watchlist', component: Watchlist, useAsDefault: true }
 ].concat(CliRouteConfig))
 
 export class StocksApp {}
