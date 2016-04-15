@@ -4,7 +4,8 @@ import {LineChart} from './line-chart/line-chart';
 
 @Component({
 	selector: 'watchlist',
-	template: '<line-chart [selected]="selected"></line-chart><list-table (select)="select($event)"></list-table>',
+	template: '<main><line-chart [selected]="selected"></line-chart><list-table (select)="select($event)"></list-table></main>',
+	styles: ['main{max-width:800px;margin:0 auto;}'],
 	directives: [ListTable, LineChart]
 })
 export class Watchlist {
