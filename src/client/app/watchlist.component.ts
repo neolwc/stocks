@@ -3,7 +3,9 @@ import {ListTable} from './list-table/list-table';
 
 @Component({
 	selector: 'watchlist',
-	template: '<list-table></list-table>',
+	template: '<list-table (select)="select($event)"></list-table>',
 	directives: [ListTable]
 })
-export class Watchlist {}
+export class Watchlist {
+	select(symbol) {}
+}

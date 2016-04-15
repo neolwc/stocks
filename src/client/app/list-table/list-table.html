@@ -14,7 +14,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="#quote of quotes">
+		<tr *ngFor="#quote of quotes" (click)="select.emit(quote.Symbol)">
 			<th>{{quote.Symbol}}</th>
 			<td>{{quote.Name}}</td>
 			<td>{{quote.LastTradePriceOnly}}</td>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit, Output, EventEmitter} from 'angular2/core';
 import {FinanceService} from '../yahoo.service';
 
 @Component({
@@ -9,6 +9,7 @@ import {FinanceService} from '../yahoo.service';
 export class ListTable implements OnInit {
   public all;
   public quotes;
+  @Output('select') select: EventEmitter<any> = new EventEmitter();
 
   private order = {
     sD: false,
