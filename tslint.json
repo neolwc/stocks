@@ -1,6 +1,7 @@
 {
   "rulesDirectory": ["node_modules/codelyzer/dist/src"],
   "rules": {
+    "experimentalDecorators": true,
     "max-line-length": [true, 100],
     "no-inferrable-types": true,
     "class-name": true,
