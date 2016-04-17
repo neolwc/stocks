@@ -21,6 +21,10 @@ export class LineChart implements OnInit {
       datasets: [
         {
           label: "Average",
+          fill: false,
+          pointBorderColor: '#ff5252',
+          pointBackgroundColor: '#ff8a80',
+          pointHoverRadius: 5,
           data: [200*Math.random(),200*Math.random(),200*Math.random(),200*Math.random(),200*Math.random()]
         }
       ]
