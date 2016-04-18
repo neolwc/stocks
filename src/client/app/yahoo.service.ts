@@ -17,4 +17,13 @@ export class FinanceService {
 		return this.http.get(encodeURI(url))
 			.map(data => data.json().query.results.quote);
 	}
+
+	history(ary = this.symbols, start: Date, end: Date) {
+		let q = `select Symbol,Date,Adj_Close from yahoo.finance.historicaldata where symbol in ("${ary.join('","')}") and
+		startDate="${start.toISOString().substr(0,10)}" and endDate="${end.toISOString().substr(0,10)}"|sort(field="Date")`;
+		let url = `https://query.yahooapis.com/v1/public/yql?q=${q}
+		&format=json&env=store://datatables.org/alltableswithkeys`;
+		return this.http.get(encodeURI(url))
+			.map(data => data.json().query.results.quote);
+	}
 }
