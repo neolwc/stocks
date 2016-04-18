@@ -11,7 +11,7 @@ export class FinanceService {
 
 	list(ary = this.symbols) {
 		let q = `select Symbol,Name,LastTradePriceOnly,MarketCapitalization
-		from yahoo.finance.quotes where symbol in ("${this.symbols.join()}")`;
+		from yahoo.finance.quotes where symbol in ("${ary.join('", "')}")`;
 		let url = `https://query.yahooapis.com/v1/public/yql?q=${q}
 		&format=json&env=store://datatables.org/alltableswithkeys`;
 		return this.http.get(encodeURI(url))
@@ -19,7 +19,7 @@ export class FinanceService {
 	}
 
 	history(ary = this.symbols, start: Date, end: Date) {
-		let q = `select Symbol,Date,Adj_Close from yahoo.finance.historicaldata where symbol in ("${ary.join('","')}") and
+		let q = `select Symbol,Date,Adj_Close from yahoo.finance.historicaldata where symbol in ("${ary.join('", "')}") and
 		startDate="${start.toISOString().substr(0,10)}" and endDate="${end.toISOString().substr(0,10)}"|sort(field="Date")`;
 		let url = `https://query.yahooapis.com/v1/public/yql?q=${q}
 		&format=json&env=store://datatables.org/alltableswithkeys`;
