@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class FinanceService {
-	symbols = ["AAPL", "AMZN", "FB", "GOOG", "IBM", "LNKD", "MSFT", "NFLX", "TWTR", "YHOO"];
+	symbols = ['YHOO', 'NVDA', 'MXIM', 'VIAB', 'ATVI', 'MAT', 'VOD', 'INTC', 'CA', 'FOXA'];
 
 	constructor(private http: Http) {}
 
