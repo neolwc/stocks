@@ -11,6 +11,7 @@ declare var Chart: any;
 export class LineChart implements OnInit, OnChanges {
   @Input() selected;
   public chart;
+  public range: number = 7;
 
   private _today: Date;
   private _start: Date;
@@ -23,7 +24,7 @@ export class LineChart implements OnInit, OnChanges {
     this._today = new Date();
     this._start = new Date();
     this._end = new Date();
-    this._start.setDate(this._today.getDate() - 7);
+    this._start.setDate(this._today.getDate() - this.range);
     this._end.setDate(this._today.getDate() - 1);
     this._financeService.history(this._start, this._end)
       .subscribe(history => {
@@ -65,6 +66,20 @@ export class LineChart implements OnInit, OnChanges {
       });
       this.chart.update();
     }
+  }
+
+  rangeChange(e) {
+    this.range = e.target.value;
+    this._start = new Date();
+    this._start.setDate(this._today.getDate() - this.range);
+    this._financeService.history(this._start, this._end)
+      .subscribe(history => {
+        this.history = this.handleHistory(history);
+        this.chart.data.labels = this.history.labels;
+        this.chart.data.datasets[0].data = this.history.data;
+        if (this.selected) this.chart.data.datasets[1].data = this.history.symbol[this.selected];
+        this.chart.update();
+      });
   }
 
   handleHistory(prices) {

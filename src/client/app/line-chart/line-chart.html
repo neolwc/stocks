@@ -1,1 +1,4 @@
-<div><canvas></canvas></div>
+<div>
+	<canvas></canvas>
+	<input [value]="range" (change)="rangeChange($event)" type="range" min="7" max="128" style="width:100%;">
+</div>
