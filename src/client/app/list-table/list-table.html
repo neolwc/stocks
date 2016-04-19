@@ -1,7 +1,7 @@
 <table>
 	<thead>
 		<tr>
-			<td colspan="4"><input (keyup)="filter($event.target.value)" type="text" autofocus></td>
+			<td colspan="4"><input (keyup)="filter($event.target.value)" type="text" placeholder="Filter" autofocus></td>
 		</tr>
 		<tr>
 			<th *ngFor="#th of ths" (click)="sort(th.a)">
