@@ -11,27 +11,51 @@ declare var Chart: any;
 export class LineChart implements OnInit {
   @Input() selected;
   public chart;
-  public data;
+
+  private _today: Date;
+  private _start: Date;
+  private _end: Date;
 
   constructor(private _financeService: FinanceService) {}
 
   ngOnInit() {
-    this.data = {
-      labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      datasets: [
-        {
-          label: "Average",
-          fill: false,
-          pointBorderColor: '#ff5252',
-          pointBackgroundColor: '#ff8a80',
-          pointHoverRadius: 5,
-          data: [200*Math.random(),200*Math.random(),200*Math.random(),200*Math.random(),200*Math.random()]
-        }
-      ]
+    this._today = new Date();
+    this._start = new Date();
+    this._end = new Date();
+    this._start.setDate(this._today.getDate() - 7);
+    this._end.setDate(this._today.getDate() - 1);
+    this._financeService.history(this._start, this._end)
+      .subscribe(history => {
+        let average = this.handleHistory(history);
+        let data = {
+          labels: average.labels,
+          datasets: [
+            {
+              label: "Average",
+              fill: false,
+              backgroundColor: '#ff5252',
+              borderColor: '#ff8a80',
+              pointBorderColor: '#ff5252',
+              pointBackgroundColor: '#ff8a80',
+              pointHoverRadius: 5,
+              data: average.data
+            }
+          ]
+        };
+        this.chart = new Chart(document.querySelector('canvas'), {
+          data: data,
+          type: 'line'
+        });
+      });
+  }
+
+  handleHistory(prices) {
+    let obj = {}, averages = [];
+    prices.forEach(price => (obj[price.Date]) ? obj[price.Date].push(price.Adj_Close) : obj[price.Date] = [price.Adj_Close]);
+    for (let date in obj) {
+      let sum = obj[date].reduce((prev, curr) => parseFloat(prev) + parseFloat(curr));
+      averages.push(sum / obj[date].length);
     }
-    this.chart = new Chart(document.querySelector('canvas'), {
-      type: 'line',
-      data: this.data
-    });
+    return {labels: Object.keys(obj), data: averages};
   }
 }

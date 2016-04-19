@@ -18,7 +18,7 @@ export class FinanceService {
 			.map(data => data.json().query.results.quote);
 	}
 
-	history(ary = this.symbols, start: Date, end: Date) {
+	history(start: Date, end: Date = new Date(), ary = this.symbols) {
 		let q = `select Symbol,Date,Adj_Close from yahoo.finance.historicaldata where symbol in ("${ary.join('", "')}") and
 		startDate="${start.toISOString().substr(0,10)}" and endDate="${end.toISOString().substr(0,10)}"|sort(field="Date")`;
 		let url = `https://query.yahooapis.com/v1/public/yql?q=${q}
